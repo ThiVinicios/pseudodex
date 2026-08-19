@@ -1,3 +1,10 @@
+/* =========================================================
+   PSEUDODEX - ESTILO PRINCIPAL
+   Compatível com o HTML/PHP atual do projeto
+   ========================================================= */
+
+/* ---------- Reset ---------- */
+
 * {
     box-sizing: border-box;
 }
@@ -10,7 +17,7 @@ body {
     min-height: 100vh;
     margin: 0;
     color: #1d2740;
-    background: #f4f7fc;
+    background: #f3f7ff;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.5;
 }
@@ -24,140 +31,108 @@ img {
     max-width: 100%;
 }
 
-button,
-a {
-    -webkit-tap-highlight-color: transparent;
-}
 
+/* =========================================================
+   CABEÇALHO
+   O PHP atual usa <header>, então os estilos estão aplicados
+   diretamente ao elemento header.
+   ========================================================= */
 
-/* -------------------------
-   Cabeçalho / Logo
-   ------------------------- */
-
-.cabecalho {
+header {
     position: relative;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-    min-height: 150px;
-    padding: 28px max(5vw, 24px);
+    min-height: 155px;
+    padding: 30px 5%;
     color: #ffffff;
-    background: linear-gradient(135deg, #1769e0 0%, #2856c7 48%, #5035b7 100%);
+    text-align: center;
+    background: linear-gradient(
+        135deg,
+        #1769e0 0%,
+        #2860d2 45%,
+        #5137b9 100%
+    );
     box-shadow: 0 8px 28px rgba(31, 67, 145, 0.22);
 }
 
-.cabecalho::before,
-.cabecalho::after {
+/* Decoração do fundo */
+
+header::before,
+header::after {
     position: absolute;
     content: "";
     border-radius: 50%;
     pointer-events: none;
 }
 
-.cabecalho::before {
+header::before {
     width: 280px;
     height: 280px;
-    right: -80px;
-    top: -150px;
+    top: -160px;
+    right: -70px;
     background: rgba(255, 255, 255, 0.08);
 }
 
-.cabecalho::after {
-    width: 190px;
-    height: 190px;
-    left: 35%;
+header::after {
+    width: 210px;
+    height: 210px;
     bottom: -150px;
+    left: 12%;
     background: rgba(255, 255, 255, 0.06);
 }
 
-.marca,
-.marca-link {
+/*
+   Cria a identidade "PseudoDex" sem precisar alterar o PHP.
+   O texto antigo do <h1> fica oculto visualmente.
+*/
+
+header h1 {
     position: relative;
     z-index: 1;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    text-decoration: none;
+    margin: 0;
+    color: transparent;
+    font-size: 0;
+    line-height: 1;
 }
 
-.marca-texto h1 {
-    margin: 0;
-    font-size: clamp(32px, 5vw, 48px);
+header h1::before {
+    content: "◓  PseudoDex";
+    color: #ffffff;
+    font-size: clamp(38px, 6vw, 56px);
     font-weight: 900;
     letter-spacing: -2px;
-    line-height: 0.95;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.16);
 }
 
-.marca-texto h1 span {
-    color: #ffd84d;
-}
+/* Pequeno detalhe dourado */
 
-.marca-texto p {
-    margin: 8px 0 0;
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-}
-
-.logo-pokeball {
-    position: relative;
-    flex: 0 0 auto;
-    width: 64px;
-    height: 64px;
-    overflow: hidden;
-    border: 4px solid #ffffff;
-    border-radius: 50%;
-    background: linear-gradient(
-        to bottom,
-        #ff5c6c 0%,
-        #ff5c6c 46%,
-        #ffffff 46%,
-        #ffffff 54%,
-        #26344f 54%,
-        #26344f 62%,
-        #ffffff 62%,
-        #ffffff 100%
-    );
-    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.2);
-}
-
-.logo-pokeball span {
+header h1::after {
+    content: "";
     position: absolute;
+    z-index: -1;
+    width: 18px;
+    height: 18px;
     top: 50%;
     left: 50%;
-    width: 20px;
-    height: 20px;
-    border: 4px solid #26344f;
+    margin-left: -5px;
     border-radius: 50%;
-    background: #ffffff;
+    background: #ffd84d;
     transform: translate(-50%, -50%);
+    opacity: 0.95;
 }
 
-.cabecalho-descricao {
+header p {
     position: relative;
     z-index: 1;
-    max-width: 430px;
-    text-align: right;
-}
-
-.cabecalho-descricao p {
-    margin: 0;
+    margin: 12px 0 0;
     color: rgba(255, 255, 255, 0.92);
     font-size: 15px;
     font-weight: 600;
 }
 
-.cabecalho-interno {
-    min-height: 118px;
-}
 
-
-/* -------------------------
-   Layout principal
-   ------------------------- */
+/* =========================================================
+   CONTAINER
+   ========================================================= */
 
 .container {
     width: min(1180px, calc(100% - 40px));
@@ -165,69 +140,29 @@ a {
     padding: 42px 0 60px;
 }
 
-.intro {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-    margin-bottom: 30px;
-}
-
-.etiqueta {
-    display: inline-flex;
-    align-items: center;
-    padding: 5px 10px;
-    border-radius: 999px;
-    color: #2455c4;
-    background: #e6efff;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-}
-
-.intro h2 {
-    margin: 10px 0 7px;
+.container > h2 {
+    margin: 0 0 8px;
     color: #1a2850;
-    font-size: clamp(26px, 4vw, 34px);
+    font-size: clamp(27px, 4vw, 34px);
     line-height: 1.15;
 }
 
-.intro p {
-    max-width: 680px;
-    margin: 0;
+.container > p {
+    margin: 0 0 20px;
     color: #68738b;
 }
 
-.contador {
-    display: flex;
-    flex-direction: column;
-    min-width: 120px;
-    padding: 16px 20px;
-    border: 1px solid #dce5f5;
-    border-radius: 16px;
-    background: #ffffff;
-    text-align: center;
-    box-shadow: 0 8px 25px rgba(35, 67, 126, 0.08);
-}
-
-.contador strong {
-    color: #275acb;
-    font-size: 30px;
-    line-height: 1;
-}
-
-.contador span {
-    margin-top: 5px;
-    color: #7b8599;
-    font-size: 12px;
-    font-weight: 700;
+.container hr {
+    height: 1px;
+    margin: 0 0 22px;
+    border: 0;
+    background: #dce4f1;
 }
 
 
-/* -------------------------
-   Cards da lista
-   ------------------------- */
+/* =========================================================
+   LISTA DE POKÉMON
+   ========================================================= */
 
 .lista {
     display: grid;
@@ -235,14 +170,17 @@ a {
     gap: 20px;
 }
 
+
+/* ---------- Card ---------- */
+
 .card {
     position: relative;
     overflow: hidden;
     min-width: 0;
-    border: 1px solid #e0e7f2;
+    border: 1px solid #dfe7f3;
     border-radius: 18px;
     background: #ffffff;
-    box-shadow: 0 7px 24px rgba(35, 67, 126, 0.08);
+    box-shadow: 0 7px 24px rgba(35, 67, 126, 0.09);
     transition:
         transform 0.2s ease,
         box-shadow 0.2s ease,
@@ -251,65 +189,70 @@ a {
 
 .card:hover {
     border-color: #b9cdf5;
-    box-shadow: 0 14px 34px rgba(35, 67, 126, 0.15);
+    box-shadow: 0 14px 34px rgba(35, 67, 126, 0.16);
     transform: translateY(-5px);
 }
 
-.card-link {
+
+/* ---------- Link do card ---------- */
+
+.card a {
     display: block;
-    height: 100%;
     color: inherit;
     text-decoration: none;
 }
 
-.card-numero {
-    position: absolute;
+.card a:hover {
+    text-decoration: none;
+}
+
+
+/* ---------- Nome ---------- */
+
+.card h2 {
+    position: relative;
     z-index: 2;
-    top: 14px;
-    left: 14px;
-    padding: 5px 9px;
-    border-radius: 999px;
-    color: #60708f;
-    background: #f1f5fb;
-    font-size: 11px;
+    margin: 0;
+    padding: 14px 12px;
+    color: #1e2c4c;
+    background: #ffffff;
+    font-size: 20px;
     font-weight: 800;
-}
-
-.card-imagem {
-    display: grid;
-    place-items: center;
-    height: 205px;
-    padding: 20px;
-    background: radial-gradient(circle at 50% 45%, #edf4ff 0%, #f7f9fd 65%, #ffffff 100%);
-}
-
-.card-imagem img {
-    width: 170px;
-    height: 170px;
-    object-fit: contain;
-    transition: transform 0.25s ease;
-}
-
-.card:hover .card-imagem img {
-    transform: scale(1.06);
-}
-
-.card-conteudo {
-    padding: 16px 17px 20px;
     text-align: center;
 }
 
-.card-conteudo h2 {
-    margin: 0 0 11px;
-    color: #1e2c4c;
-    font-size: 18px;
+
+/* ---------- Imagem ---------- */
+
+.card > a > img {
+    width: 100%;
+    height: 205px;
+    padding: 18px;
+    object-fit: contain;
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            #edf4ff 0%,
+            #f7f9fd 65%,
+            #ffffff 100%
+        );
+    transition: transform 0.25s ease;
 }
 
-.tipos {
+.card:hover > a > img {
+    transform: scale(1.06);
+}
+
+
+/* ---------- Tipos ---------- */
+
+.card > div {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 6px;
+    padding: 0 12px 17px;
+    background: #ffffff;
 }
 
 .tipo {
@@ -317,7 +260,7 @@ a {
     align-items: center;
     justify-content: center;
     min-width: 62px;
-    padding: 5px 9px;
+    padding: 5px 10px;
     border-radius: 999px;
     color: #ffffff;
     font-size: 11px;
@@ -326,9 +269,9 @@ a {
 }
 
 
-/* -------------------------
-   Cores dos tipos
-   ------------------------- */
+/* =========================================================
+   CORES DOS TIPOS
+   ========================================================= */
 
 .dragon {
     background: #7048c8;
@@ -371,344 +314,369 @@ a {
 }
 
 
-/* -------------------------
-   Página de detalhes
-   ------------------------- */
-
-.voltar {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    margin-bottom: 18px;
-    padding: 9px 14px;
-    border: 1px solid #d7e2f4;
-    border-radius: 10px;
-    color: #315ebf;
-    background: #ffffff;
-    font-size: 13px;
-    font-weight: 800;
-    text-decoration: none;
-    transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.voltar:hover {
-    background: #edf4ff;
-    transform: translateX(-2px);
-}
+/* =========================================================
+   PÁGINA DE DETALHES
+   Compatível com a estrutura atual de pokemon.php
+   ========================================================= */
 
 .detalhes {
     overflow: hidden;
+    min-height: 500px;
+    padding: 35px;
     border: 1px solid #dfe7f3;
     border-radius: 22px;
     background: #ffffff;
     box-shadow: 0 10px 32px rgba(35, 67, 126, 0.09);
 }
 
-.detalhes-topo {
-    display: grid;
-    grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.1fr);
-    min-height: 410px;
-}
 
-.pokemon-arte {
-    display: grid;
-    place-items: center;
-    padding: 40px;
-    background: radial-gradient(circle at center, #eaf2ff 0%, #f7f9fd 68%, #ffffff 100%);
-}
+/* ---------- Imagem principal ---------- */
 
-.pokemon-arte img {
-    width: min(330px, 100%);
+.detalhes > img {
+    float: left;
+    width: 330px;
     height: 330px;
+    margin: 0 40px 25px 0;
+    padding: 20px;
     object-fit: contain;
+    border-radius: 18px;
+    background:
+        radial-gradient(
+            circle at center,
+            #eaf2ff 0%,
+            #f7f9fd 68%,
+            #ffffff 100%
+        );
     filter: drop-shadow(0 16px 14px rgba(38, 60, 105, 0.12));
 }
 
-.pokemon-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 45px;
-}
 
-.pokemon-info h2 {
-    margin: 10px 0 12px;
+/* ---------- Título ---------- */
+
+.detalhes > h2 {
+    margin: 5px 0 18px;
     color: #1a2850;
     font-size: clamp(30px, 5vw, 44px);
     line-height: 1.05;
 }
 
-.descricao {
-    max-width: 620px;
-    margin: 20px 0 25px;
-    color: #647089;
+
+/* ---------- Informações ---------- */
+
+.detalhes > p {
+    margin: 10px 0;
+    color: #657189;
+    line-height: 1.7;
 }
 
-.atributos {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-}
-
-.atributos div {
-    min-width: 120px;
-    padding: 12px 15px;
-    border: 1px solid #e1e8f3;
-    border-radius: 12px;
-    background: #f8faff;
-}
-
-.atributos span,
-.atributos strong {
-    display: block;
-}
-
-.atributos span {
-    margin-bottom: 2px;
-    color: #8993a6;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-.atributos strong {
+.detalhes > p strong {
     color: #283754;
-    font-size: 16px;
+}
+
+.detalhes > p .tipo {
+    margin-left: 4px;
 }
 
 
-/* -------------------------
-   Seções internas
-   ------------------------- */
+/* ---------- Título da Pokédex ---------- */
 
-.secao {
-    margin: 0 45px;
-    padding: 30px 0;
+.detalhes > h2:nth-of-type(2) {
+    clear: none;
+    margin-top: 30px;
+    padding-top: 24px;
+    border-top: 1px solid #e8edf5;
+    font-size: 22px;
+}
+
+.detalhes > h2:nth-of-type(2)::before {
+    display: inline-block;
+    width: 5px;
+    height: 24px;
+    margin-right: 10px;
+    border-radius: 10px;
+    background: linear-gradient(180deg, #2570e7, #5740bd);
+    content: "";
+    vertical-align: -4px;
+}
+
+.detalhes > p:nth-of-type(4) {
+    max-width: 800px;
+}
+
+
+/* =========================================================
+   EVOLUÇÕES
+   ========================================================= */
+
+.evolucoes {
+    clear: both;
+    margin-top: 28px;
+    padding-top: 28px;
     border-top: 1px solid #e8edf5;
 }
 
-.titulo-secao {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 16px;
-}
-
-.titulo-secao > span {
-    width: 5px;
-    height: 24px;
-    border-radius: 10px;
-    background: linear-gradient(180deg, #2570e7, #5740bd);
-}
-
-.titulo-secao h2 {
-    margin: 0;
+.evolucoes h2 {
+    margin: 0 0 18px;
     color: #1f2e50;
     font-size: 22px;
 }
 
-.texto-descricao {
-    margin: 0;
-    color: #657189;
+.evolucoes h2::before {
+    display: inline-block;
+    width: 5px;
+    height: 24px;
+    margin-right: 10px;
+    border-radius: 10px;
+    background: linear-gradient(180deg, #2570e7, #5740bd);
+    content: "";
+    vertical-align: -4px;
 }
 
-
-/* -------------------------
-   Evoluções com imagens
-   ------------------------- */
-
-.evolucoes {
-    display: flex;
+.evolucoes span {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 13px;
+    min-width: 130px;
+    min-height: 48px;
+    margin: 5px;
+    padding: 10px 16px;
+    border: 1px solid #dfe7f3;
+    border-radius: 12px;
+    color: #2d4f91;
+    background: #f7faff;
+    font-size: 14px;
+    font-weight: 800;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
 }
 
-.evolucao {
-    position: relative;
-    flex: 1 1 0;
-    max-width: 220px;
-    padding: 15px;
-    border: 1px solid #e0e7f2;
-    border-radius: 16px;
-    background: #f9fbff;
-    text-align: center;
+.evolucoes span:hover {
+    border-color: #b9cdf5;
+    box-shadow: 0 8px 20px rgba(35, 67, 126, 0.1);
+    transform: translateY(-2px);
+}
+
+
+/* ---------- Botão voltar ---------- */
+
+.voltar {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    clear: both;
+    margin-top: 25px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #1769e0, #5035b7);
+    font-size: 13px;
+    font-weight: 800;
+    text-decoration: none;
+    box-shadow: 0 7px 18px rgba(43, 87, 183, 0.2);
     transition:
-        border-color 0.2s ease,
         transform 0.2s ease,
         box-shadow 0.2s ease;
 }
 
-.evolucao:hover {
-    border-color: #bdd0f2;
-    box-shadow: 0 9px 25px rgba(35, 67, 126, 0.1);
-    transform: translateY(-3px);
+.voltar:hover {
+    color: #ffffff;
+    text-decoration: none;
+    box-shadow: 0 10px 24px rgba(43, 87, 183, 0.28);
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   CLASSES PARA AS IMAGENS DAS EVOLUÇÕES
+   Se o pokemon.php atualizado usar essas classes,
+   elas já estarão prontas.
+   ========================================================= */
+
+.evolucao {
+    position: relative;
+    display: inline-flex;
+    width: 180px;
+    min-height: 190px;
+    margin: 5px;
+    padding: 14px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e0e7f2;
+    border-radius: 16px;
+    background: #f9fbff;
+    text-align: center;
+    vertical-align: top;
+}
+
+.evolucao img {
+    width: 125px;
+    height: 125px;
+    object-fit: contain;
+}
+
+.evolucao strong {
+    margin-top: 8px;
+    color: #273653;
+    font-size: 14px;
 }
 
 .evolucao-imagem {
     display: grid;
     place-items: center;
-    height: 145px;
-    margin-bottom: 8px;
+    height: 130px;
 }
 
 .evolucao-imagem img {
-    width: 135px;
-    height: 135px;
+    width: 120px;
+    height: 120px;
     object-fit: contain;
 }
 
-.evolucao-numero {
+.evolucoes .seta-evolucao {
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 22px;
-    height: 22px;
-    margin-bottom: 7px;
-    border-radius: 50%;
-    color: #ffffff;
-    background: #2d60c8;
-    font-size: 10px;
-    font-weight: 800;
-}
-
-.evolucao strong {
-    display: block;
-    color: #273653;
-    font-size: 14px;
-}
-
-.seta-evolucao {
-    flex: 0 0 auto;
+    width: auto;
+    min-width: auto;
+    min-height: auto;
+    margin: 0 4px;
+    padding: 0;
+    border: 0;
     color: #8a98b1;
+    background: transparent;
     font-size: 28px;
     font-weight: 300;
+    box-shadow: none;
+    vertical-align: middle;
 }
 
-.rodape {
-    padding: 22px;
-    color: #7c879a;
-    background: #edf2fa;
-    text-align: center;
-    font-size: 12px;
-    font-weight: 700;
+.evolucoes .seta-evolucao:hover {
+    border: 0;
+    box-shadow: none;
+    transform: none;
 }
 
 
-/* -------------------------
-   Responsividade
-   ------------------------- */
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
 
 @media (max-width: 1000px) {
     .lista {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .detalhes-topo {
-        grid-template-columns: 1fr;
-    }
-
-    .pokemon-arte {
-        min-height: 340px;
-    }
-
-    .pokemon-info {
-        padding-top: 30px;
-        padding-bottom: 35px;
+    .detalhes > img {
+        width: 290px;
+        height: 290px;
     }
 }
 
+
 @media (max-width: 760px) {
-    .cabecalho {
-        align-items: flex-start;
-        flex-direction: column;
-        min-height: auto;
-        padding: 24px;
+    header {
+        min-height: 140px;
+        padding: 25px 20px;
     }
 
-    .cabecalho-descricao {
-        max-width: 100%;
-        text-align: left;
+    header h1::before {
+        font-size: 40px;
+    }
+
+    .container {
+        width: min(100% - 30px, 1180px);
+        padding-top: 30px;
     }
 
     .lista {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 15px;
     }
 
-    .intro {
-        align-items: flex-start;
-        flex-direction: column;
+    .card > a > img {
+        height: 190px;
     }
 
-    .contador {
-        width: 100%;
+    .detalhes {
+        padding: 25px;
+    }
+
+    .detalhes > img {
+        float: none;
+        display: block;
+        width: min(300px, 100%);
+        height: 300px;
+        margin: 0 auto 25px;
+    }
+
+    .detalhes > h2 {
+        text-align: center;
+    }
+
+    .detalhes > p {
+        text-align: left;
     }
 
     .evolucoes {
-        flex-direction: column;
-    }
-
-    .evolucao {
-        width: 100%;
-        max-width: 280px;
-    }
-
-    .seta-evolucao {
-        transform: rotate(90deg);
-    }
-
-    .secao {
-        margin: 0 25px;
-    }
-
-    .pokemon-info {
-        padding: 30px 25px;
+        text-align: center;
     }
 }
 
+
 @media (max-width: 500px) {
+    header {
+        min-height: 125px;
+        padding: 23px 15px;
+    }
+
+    header h1::before {
+        font-size: 34px;
+        letter-spacing: -1px;
+    }
+
+    header p {
+        font-size: 13px;
+    }
+
     .container {
-        width: min(100% - 24px, 1180px);
-        padding-top: 28px;
+        width: calc(100% - 24px);
+        padding: 25px 0 40px;
     }
 
-    .marca-texto h1 {
-        font-size: 36px;
-    }
-
-    .logo-pokeball {
-        width: 55px;
-        height: 55px;
+    .container > h2 {
+        font-size: 27px;
     }
 
     .lista {
         grid-template-columns: 1fr;
     }
 
-    .card-imagem {
+    .card > a > img {
         height: 230px;
     }
 
-    .card-imagem img {
-        width: 190px;
-        height: 190px;
+    .detalhes {
+        padding: 18px;
+        border-radius: 17px;
     }
 
-    .pokemon-arte {
-        min-height: 290px;
-        padding: 25px;
-    }
-
-    .pokemon-arte img {
+    .detalhes > img {
         width: 250px;
         height: 250px;
     }
 
-    .pokemon-info h2 {
+    .detalhes > h2 {
         font-size: 32px;
     }
 
-    .secao {
-        margin: 0 18px;
+    .evolucoes span {
+        width: calc(50% - 14px);
+        min-width: 0;
+    }
+
+    .evolucao {
+        width: 100%;
+        max-width: 220px;
     }
 }
