@@ -1,0 +1,714 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    color: #1d2740;
+    background: #f4f7fc;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* -------------------------
+   Cabeçalho / Logo
+   ------------------------- */
+
+.cabecalho {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    min-height: 150px;
+    padding: 28px max(5vw, 24px);
+    color: #ffffff;
+    background: linear-gradient(135deg, #1769e0 0%, #2856c7 48%, #5035b7 100%);
+    box-shadow: 0 8px 28px rgba(31, 67, 145, 0.22);
+}
+
+.cabecalho::before,
+.cabecalho::after {
+    position: absolute;
+    content: "";
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.cabecalho::before {
+    width: 280px;
+    height: 280px;
+    right: -80px;
+    top: -150px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.cabecalho::after {
+    width: 190px;
+    height: 190px;
+    left: 35%;
+    bottom: -150px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.marca,
+.marca-link {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+}
+
+.marca-texto h1 {
+    margin: 0;
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 900;
+    letter-spacing: -2px;
+    line-height: 0.95;
+}
+
+.marca-texto h1 span {
+    color: #ffd84d;
+}
+
+.marca-texto p {
+    margin: 8px 0 0;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.logo-pokeball {
+    position: relative;
+    flex: 0 0 auto;
+    width: 64px;
+    height: 64px;
+    overflow: hidden;
+    border: 4px solid #ffffff;
+    border-radius: 50%;
+    background: linear-gradient(
+        to bottom,
+        #ff5c6c 0%,
+        #ff5c6c 46%,
+        #ffffff 46%,
+        #ffffff 54%,
+        #26344f 54%,
+        #26344f 62%,
+        #ffffff 62%,
+        #ffffff 100%
+    );
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.2);
+}
+
+.logo-pokeball span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border: 4px solid #26344f;
+    border-radius: 50%;
+    background: #ffffff;
+    transform: translate(-50%, -50%);
+}
+
+.cabecalho-descricao {
+    position: relative;
+    z-index: 1;
+    max-width: 430px;
+    text-align: right;
+}
+
+.cabecalho-descricao p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.cabecalho-interno {
+    min-height: 118px;
+}
+
+
+/* -------------------------
+   Layout principal
+   ------------------------- */
+
+.container {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 42px 0 60px;
+}
+
+.intro {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.etiqueta {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 999px;
+    color: #2455c4;
+    background: #e6efff;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.intro h2 {
+    margin: 10px 0 7px;
+    color: #1a2850;
+    font-size: clamp(26px, 4vw, 34px);
+    line-height: 1.15;
+}
+
+.intro p {
+    max-width: 680px;
+    margin: 0;
+    color: #68738b;
+}
+
+.contador {
+    display: flex;
+    flex-direction: column;
+    min-width: 120px;
+    padding: 16px 20px;
+    border: 1px solid #dce5f5;
+    border-radius: 16px;
+    background: #ffffff;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(35, 67, 126, 0.08);
+}
+
+.contador strong {
+    color: #275acb;
+    font-size: 30px;
+    line-height: 1;
+}
+
+.contador span {
+    margin-top: 5px;
+    color: #7b8599;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* -------------------------
+   Cards da lista
+   ------------------------- */
+
+.lista {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.card {
+    position: relative;
+    overflow: hidden;
+    min-width: 0;
+    border: 1px solid #e0e7f2;
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 7px 24px rgba(35, 67, 126, 0.08);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.card:hover {
+    border-color: #b9cdf5;
+    box-shadow: 0 14px 34px rgba(35, 67, 126, 0.15);
+    transform: translateY(-5px);
+}
+
+.card-link {
+    display: block;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+}
+
+.card-numero {
+    position: absolute;
+    z-index: 2;
+    top: 14px;
+    left: 14px;
+    padding: 5px 9px;
+    border-radius: 999px;
+    color: #60708f;
+    background: #f1f5fb;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.card-imagem {
+    display: grid;
+    place-items: center;
+    height: 205px;
+    padding: 20px;
+    background: radial-gradient(circle at 50% 45%, #edf4ff 0%, #f7f9fd 65%, #ffffff 100%);
+}
+
+.card-imagem img {
+    width: 170px;
+    height: 170px;
+    object-fit: contain;
+    transition: transform 0.25s ease;
+}
+
+.card:hover .card-imagem img {
+    transform: scale(1.06);
+}
+
+.card-conteudo {
+    padding: 16px 17px 20px;
+    text-align: center;
+}
+
+.card-conteudo h2 {
+    margin: 0 0 11px;
+    color: #1e2c4c;
+    font-size: 18px;
+}
+
+.tipos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+}
+
+.tipo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 62px;
+    padding: 5px 9px;
+    border-radius: 999px;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+}
+
+
+/* -------------------------
+   Cores dos tipos
+   ------------------------- */
+
+.dragon {
+    background: #7048c8;
+}
+
+.flying {
+    background: #8f83d8;
+}
+
+.rock {
+    background: #a89238;
+}
+
+.dark {
+    background: #4f4651;
+}
+
+.steel {
+    background: #7e879b;
+}
+
+.psychic {
+    background: #d35d86;
+}
+
+.ground {
+    background: #bc9b45;
+}
+
+.fighting {
+    background: #b74b3f;
+}
+
+.ghost {
+    background: #65538e;
+}
+
+.ice {
+    background: #65aebc;
+}
+
+
+/* -------------------------
+   Página de detalhes
+   ------------------------- */
+
+.voltar {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 18px;
+    padding: 9px 14px;
+    border: 1px solid #d7e2f4;
+    border-radius: 10px;
+    color: #315ebf;
+    background: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.voltar:hover {
+    background: #edf4ff;
+    transform: translateX(-2px);
+}
+
+.detalhes {
+    overflow: hidden;
+    border: 1px solid #dfe7f3;
+    border-radius: 22px;
+    background: #ffffff;
+    box-shadow: 0 10px 32px rgba(35, 67, 126, 0.09);
+}
+
+.detalhes-topo {
+    display: grid;
+    grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.1fr);
+    min-height: 410px;
+}
+
+.pokemon-arte {
+    display: grid;
+    place-items: center;
+    padding: 40px;
+    background: radial-gradient(circle at center, #eaf2ff 0%, #f7f9fd 68%, #ffffff 100%);
+}
+
+.pokemon-arte img {
+    width: min(330px, 100%);
+    height: 330px;
+    object-fit: contain;
+    filter: drop-shadow(0 16px 14px rgba(38, 60, 105, 0.12));
+}
+
+.pokemon-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 45px;
+}
+
+.pokemon-info h2 {
+    margin: 10px 0 12px;
+    color: #1a2850;
+    font-size: clamp(30px, 5vw, 44px);
+    line-height: 1.05;
+}
+
+.descricao {
+    max-width: 620px;
+    margin: 20px 0 25px;
+    color: #647089;
+}
+
+.atributos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.atributos div {
+    min-width: 120px;
+    padding: 12px 15px;
+    border: 1px solid #e1e8f3;
+    border-radius: 12px;
+    background: #f8faff;
+}
+
+.atributos span,
+.atributos strong {
+    display: block;
+}
+
+.atributos span {
+    margin-bottom: 2px;
+    color: #8993a6;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.atributos strong {
+    color: #283754;
+    font-size: 16px;
+}
+
+
+/* -------------------------
+   Seções internas
+   ------------------------- */
+
+.secao {
+    margin: 0 45px;
+    padding: 30px 0;
+    border-top: 1px solid #e8edf5;
+}
+
+.titulo-secao {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.titulo-secao > span {
+    width: 5px;
+    height: 24px;
+    border-radius: 10px;
+    background: linear-gradient(180deg, #2570e7, #5740bd);
+}
+
+.titulo-secao h2 {
+    margin: 0;
+    color: #1f2e50;
+    font-size: 22px;
+}
+
+.texto-descricao {
+    margin: 0;
+    color: #657189;
+}
+
+
+/* -------------------------
+   Evoluções com imagens
+   ------------------------- */
+
+.evolucoes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+}
+
+.evolucao {
+    position: relative;
+    flex: 1 1 0;
+    max-width: 220px;
+    padding: 15px;
+    border: 1px solid #e0e7f2;
+    border-radius: 16px;
+    background: #f9fbff;
+    text-align: center;
+    transition:
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.evolucao:hover {
+    border-color: #bdd0f2;
+    box-shadow: 0 9px 25px rgba(35, 67, 126, 0.1);
+    transform: translateY(-3px);
+}
+
+.evolucao-imagem {
+    display: grid;
+    place-items: center;
+    height: 145px;
+    margin-bottom: 8px;
+}
+
+.evolucao-imagem img {
+    width: 135px;
+    height: 135px;
+    object-fit: contain;
+}
+
+.evolucao-numero {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    margin-bottom: 7px;
+    border-radius: 50%;
+    color: #ffffff;
+    background: #2d60c8;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.evolucao strong {
+    display: block;
+    color: #273653;
+    font-size: 14px;
+}
+
+.seta-evolucao {
+    flex: 0 0 auto;
+    color: #8a98b1;
+    font-size: 28px;
+    font-weight: 300;
+}
+
+.rodape {
+    padding: 22px;
+    color: #7c879a;
+    background: #edf2fa;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* -------------------------
+   Responsividade
+   ------------------------- */
+
+@media (max-width: 1000px) {
+    .lista {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .detalhes-topo {
+        grid-template-columns: 1fr;
+    }
+
+    .pokemon-arte {
+        min-height: 340px;
+    }
+
+    .pokemon-info {
+        padding-top: 30px;
+        padding-bottom: 35px;
+    }
+}
+
+@media (max-width: 760px) {
+    .cabecalho {
+        align-items: flex-start;
+        flex-direction: column;
+        min-height: auto;
+        padding: 24px;
+    }
+
+    .cabecalho-descricao {
+        max-width: 100%;
+        text-align: left;
+    }
+
+    .lista {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .intro {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .contador {
+        width: 100%;
+    }
+
+    .evolucoes {
+        flex-direction: column;
+    }
+
+    .evolucao {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .seta-evolucao {
+        transform: rotate(90deg);
+    }
+
+    .secao {
+        margin: 0 25px;
+    }
+
+    .pokemon-info {
+        padding: 30px 25px;
+    }
+}
+
+@media (max-width: 500px) {
+    .container {
+        width: min(100% - 24px, 1180px);
+        padding-top: 28px;
+    }
+
+    .marca-texto h1 {
+        font-size: 36px;
+    }
+
+    .logo-pokeball {
+        width: 55px;
+        height: 55px;
+    }
+
+    .lista {
+        grid-template-columns: 1fr;
+    }
+
+    .card-imagem {
+        height: 230px;
+    }
+
+    .card-imagem img {
+        width: 190px;
+        height: 190px;
+    }
+
+    .pokemon-arte {
+        min-height: 290px;
+        padding: 25px;
+    }
+
+    .pokemon-arte img {
+        width: 250px;
+        height: 250px;
+    }
+
+    .pokemon-info h2 {
+        font-size: 32px;
+    }
+
+    .secao {
+        margin: 0 18px;
+    }
+}
