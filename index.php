@@ -13,7 +13,6 @@
 </header>
 <div class="container">
 <h2>Lista de Pokémon</h2>
-<p>Neste site temos <?php echo $totalPokemon; ?> Pokémon. Clique na imagem ou no nome para ver suas informações.</p>
 <hr>
 <div class="lista">
 <?php foreach($pokemons as $id=>$pokemon){ ?>
